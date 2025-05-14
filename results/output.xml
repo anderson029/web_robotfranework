@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2 (Python 3.13.3 on win32)" generated="2025-05-13T16:04:45.271772" rpa="false" schemaversion="5">
+<suite id="s1" name="Web Robotfranework" source="C:\automation\web_robotfranework">
+<suite id="s1-s1" name="SuiteSiteTestePracticePO antes de refatorar" source="C:\automation\web_robotfranework\SuiteSiteTestePracticePO_antes_de_refatorar">
+<suite id="s1-s1-s1" name="Tests" source="C:\automation\web_robotfranework\SuiteSiteTestePracticePO_antes_de_refatorar\tests">
+<suite id="s1-s1-s1-s1" name="TestSitePractice" source="C:\automation\web_robotfranework\SuiteSiteTestePracticePO_antes_de_refatorar\tests\TestSitePractice.robot">
+<test id="s1-s1-s1-s1-t1" name="Caso de Teste com PO 01: Remover Produtos do Carrinho" line="7">
+<kw name="Abrir navegador" owner="Resource" type="SETUP">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-05-13T16:04:45.751980" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<msg time="2025-05-13T16:04:46.568066" level="WARN">The chromedriver version (135.0.7049.95) detected in PATH at C:\Python313\Scripts\chromedriver.exe might not be compatible with the detected chrome version (136.0.7103.93); currently, chromedriver 136.0.7103.92 is recommended for chrome 136.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-05-13T16:04:45.751166" elapsed="2.436602"/>
+</kw>
+<status status="PASS" start="2025-05-13T16:04:45.749119" elapsed="2.439053"/>
+</kw>
+<kw name="Acessar a página home do site" owner="Resource">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-05-13T16:04:48.192381" level="INFO">Opening url 'http://automationpractice.com'</msg>
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-05-13T16:04:48.190919" elapsed="0.868391"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2025-05-13T16:04:54.170679" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2025-05-13T16:04:54.171180" level="FAIL">Element 'xpath=//*[@id="block_top_menu"]/ul' not visible after 5 seconds.</msg>
+<arg>xpath=//*[@id="block_top_menu"]/ul</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2025-05-13T16:04:49.059735" elapsed="5.117457">Element 'xpath=//*[@id="block_top_menu"]/ul' not visible after 5 seconds.</status>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<arg>My Store</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="NOT RUN" start="2025-05-13T16:04:54.177489" elapsed="0.000227"/>
+</kw>
+<status status="FAIL" start="2025-05-13T16:04:48.189104" elapsed="5.988828">Element 'xpath=//*[@id="block_top_menu"]/ul' not visible after 5 seconds.</status>
+</kw>
+<kw name="Adicionar o produto &quot;t-shirt&quot; no carrinho" owner="Resource" source_name="Adicionar o produto &quot;${PRODUTO}&quot; no carrinho">
+<status status="NOT RUN" start="2025-05-13T16:04:54.178478" elapsed="0.000362"/>
+</kw>
+<kw name="Excluir o produto do carrinho" owner="Resource">
+<status status="NOT RUN" start="2025-05-13T16:04:54.179222" elapsed="0.000219"/>
+</kw>
+<kw name="Conferir se o carrinho fica vazio" owner="Resource">
+<status status="NOT RUN" start="2025-05-13T16:04:54.179960" elapsed="0.000258"/>
+</kw>
+<kw name="Fechar navegador" owner="Resource" type="TEARDOWN">
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-05-13T16:04:54.181242" elapsed="2.356298"/>
+</kw>
+<status status="PASS" start="2025-05-13T16:04:54.180723" elapsed="2.357406"/>
+</kw>
+<status status="FAIL" start="2025-05-13T16:04:45.747164" elapsed="10.791639">Element 'xpath=//*[@id="block_top_menu"]/ul' not visible after 5 seconds.</status>
+</test>
+<status status="FAIL" start="2025-05-13T16:04:45.338082" elapsed="11.203404"/>
+</suite>
+<status status="FAIL" start="2025-05-13T16:04:45.334973" elapsed="11.209587"/>
+</suite>
+<status status="FAIL" start="2025-05-13T16:04:45.331267" elapsed="11.215893"/>
+</suite>
+<status status="FAIL" start="2025-05-13T16:04:45.289884" elapsed="11.259689"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Web Robotfranework" id="s1" pass="0" fail="1" skip="0">Web Robotfranework</stat>
+<stat name="SuiteSiteTestePracticePO antes de refatorar" id="s1-s1" pass="0" fail="1" skip="0">Web Robotfranework.SuiteSiteTestePracticePO antes de refatorar</stat>
+<stat name="Tests" id="s1-s1-s1" pass="0" fail="1" skip="0">Web Robotfranework.SuiteSiteTestePracticePO antes de refatorar.Tests</stat>
+<stat name="TestSitePractice" id="s1-s1-s1-s1" pass="0" fail="1" skip="0">Web Robotfranework.SuiteSiteTestePracticePO antes de refatorar.Tests.TestSitePractice</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-05-13T16:04:45.248152" level="WARN">Error in file 'C:\automation\web_robotfranework\SuiteSiteTestePracticePO_antes_de_refatorar\tests\TestSitePractice.robot' on line 6: Singular section headers like '*** Test Case ***' are deprecated. Use plural format like '*** Test Cases ***' instead.</msg>
+<msg time="2025-05-13T16:04:46.568066" level="WARN">The chromedriver version (135.0.7049.95) detected in PATH at C:\Python313\Scripts\chromedriver.exe might not be compatible with the detected chrome version (136.0.7103.93); currently, chromedriver 136.0.7103.92 is recommended for chrome 136.*, so it is advised to delete the driver in PATH and retry</msg>
+</errors>
+</robot>
