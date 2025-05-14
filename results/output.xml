@@ -1,83 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2 (Python 3.13.3 on win32)" generated="2025-05-13T16:04:45.271772" rpa="false" schemaversion="5">
-<suite id="s1" name="Web Robotfranework" source="C:\automation\web_robotfranework">
-<suite id="s1-s1" name="SuiteSiteTestePracticePO antes de refatorar" source="C:\automation\web_robotfranework\SuiteSiteTestePracticePO_antes_de_refatorar">
-<suite id="s1-s1-s1" name="Tests" source="C:\automation\web_robotfranework\SuiteSiteTestePracticePO_antes_de_refatorar\tests">
-<suite id="s1-s1-s1-s1" name="TestSitePractice" source="C:\automation\web_robotfranework\SuiteSiteTestePracticePO_antes_de_refatorar\tests\TestSitePractice.robot">
-<test id="s1-s1-s1-s1-t1" name="Caso de Teste com PO 01: Remover Produtos do Carrinho" line="7">
-<kw name="Abrir navegador" owner="Resource" type="SETUP">
+<robot generator="Robot 7.2 (Python 3.13.3 on win32)" generated="2025-05-14T19:43:28.431860" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\automation\web_robotfranework\tests">
+<suite id="s1-s1" name="TestSitePractice" source="C:\automation\web_robotfranework\tests\TestSitePractice.robot">
+<test id="s1-s1-t1" name="Remover Produtos do Carrinho" line="9">
+<kw name="Abrir navegador" owner="base" type="SETUP">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-05-13T16:04:45.751980" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
-<msg time="2025-05-13T16:04:46.568066" level="WARN">The chromedriver version (135.0.7049.95) detected in PATH at C:\Python313\Scripts\chromedriver.exe might not be compatible with the detected chrome version (136.0.7103.93); currently, chromedriver 136.0.7103.92 is recommended for chrome 136.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-05-14T19:43:28.757430" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<msg time="2025-05-14T19:43:29.576384" level="WARN">The chromedriver version (135.0.7049.95) detected in PATH at C:\Python313\Scripts\chromedriver.exe might not be compatible with the detected chrome version (136.0.7103.93); currently, chromedriver 136.0.7103.94 is recommended for chrome 136.*, so it is advised to delete the driver in PATH and retry</msg>
 <arg>about:blank</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-05-13T16:04:45.751166" elapsed="2.436602"/>
+<status status="PASS" start="2025-05-14T19:43:28.757176" elapsed="2.103794"/>
 </kw>
-<status status="PASS" start="2025-05-13T16:04:45.749119" elapsed="2.439053"/>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-05-14T19:43:30.861262" elapsed="0.026491"/>
 </kw>
-<kw name="Acessar a página home do site" owner="Resource">
+<status status="PASS" start="2025-05-14T19:43:28.756417" elapsed="2.131480"/>
+</kw>
+<kw name="Acessar a página home do site" owner="home">
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-05-13T16:04:48.192381" level="INFO">Opening url 'http://automationpractice.com'</msg>
+<msg time="2025-05-14T19:43:30.888971" level="INFO">Opening url 'http://www.automationpractice.pl/index.php'</msg>
 <arg>${URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-05-13T16:04:48.190919" elapsed="0.868391"/>
+<status status="PASS" start="2025-05-14T19:43:30.888788" elapsed="4.254914"/>
 </kw>
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<msg time="2025-05-13T16:04:54.170679" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-05-13T16:04:54.171180" level="FAIL">Element 'xpath=//*[@id="block_top_menu"]/ul' not visible after 5 seconds.</msg>
 <arg>xpath=//*[@id="block_top_menu"]/ul</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="FAIL" start="2025-05-13T16:04:49.059735" elapsed="5.117457">Element 'xpath=//*[@id="block_top_menu"]/ul' not visible after 5 seconds.</status>
+<status status="PASS" start="2025-05-14T19:43:35.144029" elapsed="0.035327"/>
 </kw>
 <kw name="Title Should Be" owner="SeleniumLibrary">
-<arg>My Store</arg>
+<msg time="2025-05-14T19:43:35.186158" level="INFO">Page title is 'My Shop'.</msg>
+<arg>My Shop</arg>
 <doc>Verifies that the current page title equals ``title``.</doc>
-<status status="NOT RUN" start="2025-05-13T16:04:54.177489" elapsed="0.000227"/>
+<status status="PASS" start="2025-05-14T19:43:35.179577" elapsed="0.006687"/>
 </kw>
-<status status="FAIL" start="2025-05-13T16:04:48.189104" elapsed="5.988828">Element 'xpath=//*[@id="block_top_menu"]/ul' not visible after 5 seconds.</status>
+<status status="PASS" start="2025-05-14T19:43:30.888397" elapsed="4.297982"/>
 </kw>
-<kw name="Adicionar o produto &quot;t-shirt&quot; no carrinho" owner="Resource" source_name="Adicionar o produto &quot;${PRODUTO}&quot; no carrinho">
-<status status="NOT RUN" start="2025-05-13T16:04:54.178478" elapsed="0.000362"/>
+<kw name="To login" owner="base">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-05-14T19:43:35.187274" level="INFO">Clicking element 'xpath=//*[@id="header"]//*[@class="login"][contains(text(),"Sign in")]'.</msg>
+<arg>xpath=//*[@id="header"]//*[@class="login"][contains(text(),"Sign in")]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-14T19:43:35.187092" elapsed="1.193053"/>
 </kw>
-<kw name="Excluir o produto do carrinho" owner="Resource">
-<status status="NOT RUN" start="2025-05-13T16:04:54.179222" elapsed="0.000219"/>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-05-14T19:43:36.380673" level="INFO">Typing text 'andy@teste.com' into text field 'xpath=//*[@id='email']'.</msg>
+<arg>xpath=//*[@id='email']</arg>
+<arg>${EMAIL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-14T19:43:36.380376" elapsed="0.168098"/>
 </kw>
-<kw name="Conferir se o carrinho fica vazio" owner="Resource">
-<status status="NOT RUN" start="2025-05-13T16:04:54.179960" elapsed="0.000258"/>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-05-14T19:43:36.549503" level="INFO">Typing text '12345' into text field 'xpath=//*[@id='passwd']'.</msg>
+<arg>xpath=//*[@id='passwd']</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-14T19:43:36.548977" elapsed="0.138815"/>
 </kw>
-<kw name="Fechar navegador" owner="Resource" type="TEARDOWN">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-05-14T19:43:36.688761" level="INFO">Clicking button 'id=SubmitLogin'.</msg>
+<arg>id=SubmitLogin</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-05-14T19:43:36.688144" elapsed="0.130676"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>My account</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-05-14T19:43:36.819164" elapsed="1.117384"/>
+</kw>
+<arg>andy@teste.com</arg>
+<arg>12345</arg>
+<status status="PASS" start="2025-05-14T19:43:35.186744" elapsed="2.749923"/>
+</kw>
+<kw name="Fechar navegador" owner="base" type="TEARDOWN">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-05-14T19:43:38.036767" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="Tests.TestSitePractice/Remover%20Produtos%20do%20Carrinho.png"&gt;&lt;img src="Tests.TestSitePractice/Remover%20Produtos%20do%20Carrinho.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${EXECDIR}/results/${SUITE_NAME}/${TEST_NAME}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-05-14T19:43:37.937726" elapsed="0.099261"/>
+</kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-05-13T16:04:54.181242" elapsed="2.356298"/>
+<status status="PASS" start="2025-05-14T19:43:38.037233" elapsed="2.186178"/>
 </kw>
-<status status="PASS" start="2025-05-13T16:04:54.180723" elapsed="2.357406"/>
+<status status="PASS" start="2025-05-14T19:43:37.937251" elapsed="2.286293"/>
 </kw>
-<status status="FAIL" start="2025-05-13T16:04:45.747164" elapsed="10.791639">Element 'xpath=//*[@id="block_top_menu"]/ul' not visible after 5 seconds.</status>
+<tag>remove</tag>
+<status status="PASS" start="2025-05-14T19:43:28.755529" elapsed="11.468315"/>
 </test>
-<status status="FAIL" start="2025-05-13T16:04:45.338082" elapsed="11.203404"/>
+<status status="PASS" start="2025-05-14T19:43:28.470184" elapsed="11.754818"/>
 </suite>
-<status status="FAIL" start="2025-05-13T16:04:45.334973" elapsed="11.209587"/>
-</suite>
-<status status="FAIL" start="2025-05-13T16:04:45.331267" elapsed="11.215893"/>
-</suite>
-<status status="FAIL" start="2025-05-13T16:04:45.289884" elapsed="11.259689"/>
+<status status="PASS" start="2025-05-14T19:43:28.433674" elapsed="11.792453"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">remove</stat>
 </tag>
 <suite>
-<stat name="Web Robotfranework" id="s1" pass="0" fail="1" skip="0">Web Robotfranework</stat>
-<stat name="SuiteSiteTestePracticePO antes de refatorar" id="s1-s1" pass="0" fail="1" skip="0">Web Robotfranework.SuiteSiteTestePracticePO antes de refatorar</stat>
-<stat name="Tests" id="s1-s1-s1" pass="0" fail="1" skip="0">Web Robotfranework.SuiteSiteTestePracticePO antes de refatorar.Tests</stat>
-<stat name="TestSitePractice" id="s1-s1-s1-s1" pass="0" fail="1" skip="0">Web Robotfranework.SuiteSiteTestePracticePO antes de refatorar.Tests.TestSitePractice</stat>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="TestSitePractice" id="s1-s1" pass="1" fail="0" skip="0">Tests.TestSitePractice</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-05-13T16:04:45.248152" level="WARN">Error in file 'C:\automation\web_robotfranework\SuiteSiteTestePracticePO_antes_de_refatorar\tests\TestSitePractice.robot' on line 6: Singular section headers like '*** Test Case ***' are deprecated. Use plural format like '*** Test Cases ***' instead.</msg>
-<msg time="2025-05-13T16:04:46.568066" level="WARN">The chromedriver version (135.0.7049.95) detected in PATH at C:\Python313\Scripts\chromedriver.exe might not be compatible with the detected chrome version (136.0.7103.93); currently, chromedriver 136.0.7103.92 is recommended for chrome 136.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-05-14T19:43:29.576384" level="WARN">The chromedriver version (135.0.7049.95) detected in PATH at C:\Python313\Scripts\chromedriver.exe might not be compatible with the detected chrome version (136.0.7103.93); currently, chromedriver 136.0.7103.94 is recommended for chrome 136.*, so it is advised to delete the driver in PATH and retry</msg>
 </errors>
 </robot>
