@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-...    timeout=5.0                   
+...    timeout=5.0            
 ...    screenshot_root_directory=None 
 Library    String
 

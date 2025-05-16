@@ -63,8 +63,7 @@ Clicar no botão "Proceed to checkout"
 
 
 
-Excluir o produto do carrinho
-    Click Element    xpath=//*[@class="cart_quantity_delete"]
+
 
 Clicar em "Sign in"
     Click Element    xpath=//*[@id="header"]//*[@class="login"][contains(text(),"Sign in")]
@@ -102,7 +101,3 @@ Conferir se o cadastro foi efetuado com sucesso
     Element Text Should Be           xpath=//*[@id="center_column"]/p
     ...    Welcome to your account. Here you can manage all of your personal information and orders.
     Element Text Should Be           xpath=//*[@id="header"]/div[2]//div[1]/a/span    May Fernandes
-
-Conferir se o carrinho fica vazio
-    Wait Until Element Is Visible   xpath=//*[@id="center_column"]/p[@class='alert alert-warning']
-    Element Text Should Be          xpath=//*[@id="center_column"]/p[@class='alert alert-warning']    Your shopping cart is empty.

@@ -9,11 +9,10 @@ Test Teardown       Fechar navegador
 Remover Produtos do Carrinho
     [Tags]    remove
     Acessar a página home do site
-    To login    andy@teste.com    12345   
+    To login    adnnovato@gmail.com    12345@line  
     Adicionar o produto no carrinho      Blouse
-   
-    # Excluir o produto do carrinho
-    # Conferir se o carrinho fica vazio
+    Excluir o produto do carrinho
+    Conferir se o carrinho fica vazio
 
 ### EXERCÍCIO
 # Caso de Teste com PO 02: Adicionar Cliente
