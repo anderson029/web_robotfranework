@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2 (Python 3.13.3 on win32)" generated="2025-05-16T18:54:50.212740" rpa="false" schemaversion="5">
+<suite id="s1" name="Get Users" source="c:\automation\web_robotfranework\tests\API_tests\get_users.robot">
+<test id="s1-t1" name="Cadastrar usuário e fazer uma consulta pelo id" line="30">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-05-16T18:54:51.090732" level="INFO">&amp;{DATA} = { nome=Fulano da Silva | email=testedoteste@qa.com | password=teste123 | administrador=true }</msg>
+<var>&amp;{DATA}</var>
+<arg>nome=Fulano da Silva</arg>
+<arg>email=testedoteste@qa.com</arg>
+<arg>password=teste123</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-05-16T18:54:51.089486" elapsed="0.004757"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-05-16T18:54:51.430411" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '108', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "Fulano da Silva", "email": "testedoteste@qa.com", "password": "teste123", "administrador": "true"}' 
+ </msg>
+<msg time="2025-05-16T18:54:51.430794" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=201, reason=Created 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': '1ee14187c58843eb595003b8aca64da9', 'date': 'Fri, 16 May 2025 21:54:51 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "1TH7RiKDfLgqUDYe"
+} 
+ </msg>
+<msg time="2025-05-16T18:54:51.431195" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/usuarios</arg>
+<arg>json=${DATA}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-05-16T18:54:51.095398" elapsed="0.335973"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-05-16T18:54:51.432362" elapsed="0.001673"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-05-16T18:54:51.436126" level="FAIL">Resolving variable '${response.json()['id']}' failed: KeyError: 'id'</msg>
+<var>${id}</var>
+<arg>${response.json()['id']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="FAIL" start="2025-05-16T18:54:51.434860" elapsed="0.002815">Resolving variable '${response.json()['id']}' failed: KeyError: 'id'</status>
+</kw>
+<doc>Testa a consulta com headers e parâmetros</doc>
+<tag>API</tag>
+<status status="FAIL" start="2025-05-16T18:54:51.088051" elapsed="0.350576">Resolving variable '${response.json()['id']}' failed: KeyError: 'id'</status>
+</test>
+<status status="FAIL" start="2025-05-16T18:54:50.225566" elapsed="1.215744"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">API</stat>
+</tag>
+<suite>
+<stat name="Get Users" id="s1" pass="0" fail="1" skip="0">Get Users</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
