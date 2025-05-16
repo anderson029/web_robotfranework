@@ -13,26 +13,6 @@ Acessar a página home do site
     Wait Until Element Is Visible    xpath=//*[@id="block_top_menu"]/ul
     Title Should Be     My Shop
 
-Adicionar o produto no carrinho    
-    [Arguments]        ${PRODUTO}
-    Consultar produto disponível     ${PRODUTO}
-    ${elemento_visivel} =    Run Keyword And Return Status
-    ...    Wait Until Element Is Visible    xpath=//img[@itemprop='image'][@alt='${PRODUTO}']    5
-    
-    IF    not ${elemento_visivel}      
-        Fail    msg=Produto não encontrado: ${PRODUTO}
-    ELSE
-        Click Element    xpath=//img[@itemprop='image'][@alt='${PRODUTO}']
-        Log To Console    Produto encontrado: ${PRODUTO}
-    END
-
-    Wait Until Page Contains    Data sheet    5
-    Click Element    id=color_8
-    Wait Until Page Contains    In stock    5
-    Click Element    id=add_to_cart
-    Wait Until Page Contains    Product successfully added to your shopping cart    5
-    To go cart
-
 
 Consultar produto disponível
     [Arguments]        ${PRODUTO}
@@ -40,64 +20,5 @@ Consultar produto disponível
     Input Text          name=search_query    ${PRODUTO}
     Click Element       name=submit_search
 
-
-
-
-
-# Digitar o nome do produto "${PRODUTO}" no campo de pesquisa
-#     Input Text          name=search_query    ${PRODUTO}
-
-# Clicar no botão pesquisar
-#     Click Element       name=submit_search
-
-Clicar no botão "Add to Cart" do produto
-    Wait Until Element Is Visible   xpath=//*[@id="center_column"]//img[@alt="Faded Short Sleeve T-shirts"]
-    Click Element                   xpath=//*[@id="center_column"]//img[@alt="Faded Short Sleeve T-shirts"]
-    Wait Until Element Is Visible   xpath=//*[@id="add_to_cart"]/button
-    Click Button                    xpath=//*[@id="add_to_cart"]/button
-
-Clicar no botão "Proceed to checkout"
-    Wait Until Element Is Visible   xpath=//*[@id="layer_cart"]//a[@title="Proceed to checkout"]
-    Click Element                   xpath=//*[@id="layer_cart"]//a[@title="Proceed to checkout"]
-
-
-
-
-
-
-Clicar em "Sign in"
+To go Authentication
     Click Element    xpath=//*[@id="header"]//*[@class="login"][contains(text(),"Sign in")]
-
-Informar um e-mail válido
-    Wait Until Element Is Visible   id=email_create
-    ${EMAIL}                        Generate Random String
-    Input Text                      id=email_create    ${EMAIL}@testerobot.com
-
-Clicar em "Create an account"
-    Click Button    id=SubmitCreate
-
-Preencher os dados obrigatórios
-    Wait Until Element Is Visible   xpath=//*[@id="account-creation_form"]//h3[contains(text(),"Your personal information")]
-    Click Element                   id=id_gender2
-    Input Text                      id=customer_firstname    May
-    Input Text                      id=customer_lastname     Fernandes
-    Input Text                      id=passwd                123456
-    Input Text                      id=address1              Rua Framework, Bairro Robot
-    Input Text                      id=city                  Floripa
-    Set Focus To Element            id=id_state
-    ### No firefox ocorreu problema ao achar o listbox State, então coloquei um if para esperar
-    ### pelo elemento quando for firefox
-    Run Keyword If    '${BROWSER}'=='firefox'  Wait Until Element Is Visible   id=id_state
-    Select From List By Index       id=id_state              9
-    Input Text                      id=postcode              12345
-    Input Text                      id=phone_mobile          99988877
-
-Submeter cadastro
-    Click Button    submitAccount
-
-#### Conferências
-Conferir se o cadastro foi efetuado com sucesso
-    Wait Until Element Is Visible    xpath=//*[@id="center_column"]/p
-    Element Text Should Be           xpath=//*[@id="center_column"]/p
-    ...    Welcome to your account. Here you can manage all of your personal information and orders.
-    Element Text Should Be           xpath=//*[@id="header"]/div[2]//div[1]/a/span    May Fernandes
