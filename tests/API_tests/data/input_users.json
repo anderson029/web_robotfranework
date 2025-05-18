@@ -1,0 +1,7 @@
+
+{{
+  "nome": "New cadastro",
+  "email": "{user_email}", 
+  "password": "testee",
+  "administrador": "true"
+}}

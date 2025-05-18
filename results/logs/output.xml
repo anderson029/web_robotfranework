@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2 (Python 3.13.3 on win32)" generated="2025-05-18T16:32:20.503140" rpa="false" schemaversion="5">
+<suite id="s1" name="API tests" source="C:\automation\web_robotfranework\tests\API_tests">
+<suite id="s1-s1" name="Test Server Rest" source="C:\automation\web_robotfranework\tests\API_tests\test_server_rest.robot">
+<test id="s1-s1-t1" name="Enviando requisição com templates" line="106">
+<kw name="Get Time" owner="BuiltIn">
+<msg time="2025-05-18T16:32:21.177542" level="INFO">${timestamp} = 1747596741</msg>
+<var>${timestamp}</var>
+<arg>epoch</arg>
+<doc>Returns the given time in the requested format.</doc>
+<status status="PASS" start="2025-05-18T16:32:21.177261" elapsed="0.000322"/>
+</kw>
+<kw name="Catenate" owner="BuiltIn">
+<msg time="2025-05-18T16:32:21.178190" level="INFO">${email} = user1747596741@gmail.com</msg>
+<var>${email}</var>
+<arg>SEPARATOR=</arg>
+<arg>user${timestamp}</arg>
+<arg>@gmail.com</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<status status="PASS" start="2025-05-18T16:32:21.177947" elapsed="0.000277"/>
+</kw>
+<kw name="Format String" owner="String">
+<msg time="2025-05-18T16:32:21.178844" level="INFO" html="true">Reading template from file &lt;a href="C:\automation\web_robotfranework\tests\API_tests\data\input_users.json"&gt;C:\automation\web_robotfranework\tests\API_tests\data\input_users.json&lt;/a&gt;.</msg>
+<msg time="2025-05-18T16:32:21.179131" level="INFO">${BODY} = 
+{
+  "nome": "New cadastro",
+  "email": "user1747596741@gmail.com", 
+  "password": "testee",
+  "administrador": "true"
+}</msg>
+<var>${BODY}</var>
+<arg>C:\\automation\\web_robotfranework\\tests\\API_tests/data/input_users.json</arg>
+<arg>user_email=${email}</arg>
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<status status="PASS" start="2025-05-18T16:32:21.178525" elapsed="0.000637"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-18T16:32:21.179604" level="INFO">
+{
+  "nome": "New cadastro",
+  "email": "user1747596741@gmail.com", 
+  "password": "testee",
+  "administrador": "true"
+}</msg>
+<arg>${BODY}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-18T16:32:21.179465" elapsed="0.000189"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-18T16:32:21.180204" level="INFO">${body_dict} = {'nome': 'New cadastro', 'email': 'user1747596741@gmail.com', 'password': 'testee', 'administrador': 'true'}</msg>
+<var>${body_dict}</var>
+<arg>json.loads('''${BODY}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-18T16:32:21.179920" elapsed="0.000314"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-05-18T16:32:21.509310" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '85', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=nome=New+cadastro&amp;email=user1747596741%40gmail.com&amp;password=testee&amp;administrador=true 
+ </msg>
+<msg time="2025-05-18T16:32:21.509410" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=201, reason=Created 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'de450996806d6c04bce1f06dddf91669;o=1', 'date': 'Sun, 18 May 2025 19:32:21 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "J9LtJmx0ZCugXAv7"
+} 
+ </msg>
+<msg time="2025-05-18T16:32:21.509957" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${BASE_URL}/usuarios</arg>
+<arg>data=${body_dict}</arg>
+<arg>expected_status=201</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-05-18T16:32:21.180544" elapsed="0.329451"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-18T16:32:21.510938" level="INFO">{'message': 'Cadastro realizado com sucesso', '_id': 'J9LtJmx0ZCugXAv7'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-18T16:32:21.510394" elapsed="0.000603"/>
+</kw>
+<tag>template</tag>
+<status status="PASS" start="2025-05-18T16:32:21.176209" elapsed="0.335158"/>
+</test>
+<doc>Testes de API com Robot Framework - https://serverest.dev/#</doc>
+<status status="PASS" start="2025-05-18T16:32:20.543481" elapsed="0.968934"/>
+</suite>
+<status status="PASS" start="2025-05-18T16:32:20.505024" elapsed="1.008611"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">template</stat>
+</tag>
+<suite>
+<stat name="API tests" id="s1" pass="1" fail="0" skip="0">API tests</stat>
+<stat name="Test Server Rest" id="s1-s1" pass="1" fail="0" skip="0">API tests.Test Server Rest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
