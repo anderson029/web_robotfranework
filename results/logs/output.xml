@@ -1,105 +1,288 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2 (Python 3.13.3 on win32)" generated="2025-05-18T16:32:20.503140" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2 (Python 3.13.3 on win32)" generated="2025-05-19T11:16:48.348036" rpa="false" schemaversion="5">
 <suite id="s1" name="API tests" source="C:\automation\web_robotfranework\tests\API_tests">
-<suite id="s1-s1" name="Test Server Rest" source="C:\automation\web_robotfranework\tests\API_tests\test_server_rest.robot">
-<test id="s1-s1-t1" name="Enviando requisição com templates" line="106">
-<kw name="Get Time" owner="BuiltIn">
-<msg time="2025-05-18T16:32:21.177542" level="INFO">${timestamp} = 1747596741</msg>
-<var>${timestamp}</var>
-<arg>epoch</arg>
-<doc>Returns the given time in the requested format.</doc>
-<status status="PASS" start="2025-05-18T16:32:21.177261" elapsed="0.000322"/>
+<suite id="s1-s1" name="Conferindo Json" source="C:\automation\web_robotfranework\tests\API_tests\conferindo_json.robot">
+<test id="s1-s1-t1" name="Exemplo: Conferindo JSON complexo" line="10">
+<kw name="Confere objetos e sub-objetos do JSON">
+<kw name="Pega JSON">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2025-05-19T11:16:49.114059" level="INFO" html="true">Getting file '&lt;a href="file://C:\automation\web_robotfranework\tests\API_tests\data\json_complexo.json"&gt;C:\automation\web_robotfranework\tests\API_tests\data\json_complexo.json&lt;/a&gt;'.</msg>
+<msg time="2025-05-19T11:16:49.126754" level="INFO">${MEU_JSON_COMPLEXO} = {
+    "pessoa": {
+        "nome": {
+            "primeiro_nome": "mayara",
+            "nomes_do_meio": "ribeiro",
+            "ultimo_nome": "fernandes",
+            "apelido": "May"
+        },
+     ...</msg>
+<var>${MEU_JSON_COMPLEXO}</var>
+<arg>C:\\automation\\web_robotfranework\\tests\\API_tests/data/json_complexo.json</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.113905" elapsed="0.012920"/>
 </kw>
-<kw name="Catenate" owner="BuiltIn">
-<msg time="2025-05-18T16:32:21.178190" level="INFO">${email} = user1747596741@gmail.com</msg>
-<var>${email}</var>
-<arg>SEPARATOR=</arg>
-<arg>user${timestamp}</arg>
-<arg>@gmail.com</arg>
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<status status="PASS" start="2025-05-18T16:32:21.177947" elapsed="0.000277"/>
-</kw>
-<kw name="Format String" owner="String">
-<msg time="2025-05-18T16:32:21.178844" level="INFO" html="true">Reading template from file &lt;a href="C:\automation\web_robotfranework\tests\API_tests\data\input_users.json"&gt;C:\automation\web_robotfranework\tests\API_tests\data\input_users.json&lt;/a&gt;.</msg>
-<msg time="2025-05-18T16:32:21.179131" level="INFO">${BODY} = 
-{
-  "nome": "New cadastro",
-  "email": "user1747596741@gmail.com", 
-  "password": "testee",
-  "administrador": "true"
-}</msg>
-<var>${BODY}</var>
-<arg>C:\\automation\\web_robotfranework\\tests\\API_tests/data/input_users.json</arg>
-<arg>user_email=${email}</arg>
-<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
-<status status="PASS" start="2025-05-18T16:32:21.178525" elapsed="0.000637"/>
-</kw>
-<kw name="Log" owner="BuiltIn">
-<msg time="2025-05-18T16:32:21.179604" level="INFO">
-{
-  "nome": "New cadastro",
-  "email": "user1747596741@gmail.com", 
-  "password": "testee",
-  "administrador": "true"
-}</msg>
-<arg>${BODY}</arg>
-<doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-05-18T16:32:21.179465" elapsed="0.000189"/>
-</kw>
+<kw name="Converter String para JSON">
 <kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-05-18T16:32:21.180204" level="INFO">${body_dict} = {'nome': 'New cadastro', 'email': 'user1747596741@gmail.com', 'password': 'testee', 'administrador': 'true'}</msg>
-<var>${body_dict}</var>
-<arg>json.loads('''${BODY}''')</arg>
+<msg time="2025-05-19T11:16:49.127712" level="INFO">${json} = {'pessoa': {'nome': {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}, 'hobbies': {'livros': [{'titulo': 'O Símbolo Perdido', 'autor': 'Dan Brown'},...</msg>
+<var>${json}</var>
+<arg>json.loads('''${string_json}''')</arg>
 <arg>json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-05-18T16:32:21.179920" elapsed="0.000314"/>
+<status status="PASS" start="2025-05-19T11:16:49.127350" elapsed="0.000397"/>
 </kw>
-<kw name="POST" owner="RequestsLibrary">
-<msg time="2025-05-18T16:32:21.509310" level="INFO">POST Request : url=https://serverest.dev/usuarios 
- path_url=/usuarios 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '85', 'Content-Type': 'application/x-www-form-urlencoded'} 
- body=nome=New+cadastro&amp;email=user1747596741%40gmail.com&amp;password=testee&amp;administrador=true 
- </msg>
-<msg time="2025-05-18T16:32:21.509410" level="INFO">POST Response : url=https://serverest.dev/usuarios 
- status=201, reason=Created 
- headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'x-cloud-trace-context': 'de450996806d6c04bce1f06dddf91669;o=1', 'date': 'Sun, 18 May 2025 19:32:21 GMT', 'server': 'Google Frontend', 'Content-Length': '82'} 
- body={
-    "message": "Cadastro realizado com sucesso",
-    "_id": "J9LtJmx0ZCugXAv7"
-} 
- </msg>
-<msg time="2025-05-18T16:32:21.509957" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<var>${response}</var>
-<arg>${BASE_URL}/usuarios</arg>
-<arg>data=${body_dict}</arg>
-<arg>expected_status=201</arg>
-<doc>Sends a POST request.</doc>
-<status status="PASS" start="2025-05-18T16:32:21.180544" elapsed="0.329451"/>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-05-19T11:16:49.127813" elapsed="0.000049"/>
+</return>
+<msg time="2025-05-19T11:16:49.128012" level="INFO">${MEU_JSON_COMPLEXO} = {'pessoa': {'nome': {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}, 'hobbies': {'livros': [{'titulo': 'O Símbolo Perdido', 'autor': 'Dan Brown'},...</msg>
+<var>${MEU_JSON_COMPLEXO}</var>
+<arg>${MEU_JSON_COMPLEXO}</arg>
+<status status="PASS" start="2025-05-19T11:16:49.127026" elapsed="0.001015"/>
+</kw>
+<kw name="Converter String para JSON">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-19T11:16:49.129007" level="INFO">${json} = {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}</msg>
+<var>${json}</var>
+<arg>json.loads('''${string_json}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.128590" elapsed="0.000449"/>
+</kw>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-05-19T11:16:49.129111" elapsed="0.000063"/>
+</return>
+<msg time="2025-05-19T11:16:49.129327" level="INFO">${MEU_DICT_ESPERADO} = {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}</msg>
+<var>${MEU_DICT_ESPERADO}</var>
+<arg>${MEU_DICT_ESPERADO}</arg>
+<status status="PASS" start="2025-05-19T11:16:49.128190" elapsed="0.001163"/>
+</kw>
+<kw name="Dictionary Should Contain Sub Dictionary" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]['nome']}</arg>
+<arg>${MEU_DICT_ESPERADO}</arg>
+<doc>Fails unless all items in ``dict2`` are found from ``dict1``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.129449" elapsed="0.000473"/>
+</kw>
+<return>
+<value>${MEU_JSON_COMPLEXO}</value>
+<status status="PASS" start="2025-05-19T11:16:49.129977" elapsed="0.000028"/>
+</return>
+<msg time="2025-05-19T11:16:49.130139" level="INFO">${MEU_JSON_COMPLEXO} = {'pessoa': {'nome': {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}, 'hobbies': {'livros': [{'titulo': 'O Símbolo Perdido', 'autor': 'Dan Brown'},...</msg>
+<var>${MEU_JSON_COMPLEXO}</var>
+<status status="PASS" start="2025-05-19T11:16:49.113303" elapsed="0.016865"/>
+</kw>
+<kw name="Converter String para JSON">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-19T11:16:49.130778" level="INFO">${json} = {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}</msg>
+<var>${json}</var>
+<arg>json.loads('''${string_json}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.130540" elapsed="0.000267"/>
+</kw>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-05-19T11:16:49.130860" elapsed="0.000026"/>
+</return>
+<msg time="2025-05-19T11:16:49.131010" level="INFO">${MEU_DICT_ESPERADO} = {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}</msg>
+<var>${MEU_DICT_ESPERADO}</var>
+<arg>${MEU_DICT_ESPERADO}</arg>
+<status status="PASS" start="2025-05-19T11:16:49.130305" elapsed="0.000731"/>
+</kw>
+<kw name="Dictionary Should Contain Sub Dictionary" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["nome"]}</arg>
+<arg>${MEU_DICT_ESPERADO}</arg>
+<doc>Fails unless all items in ``dict2`` are found from ``dict1``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.131127" elapsed="0.000404"/>
+</kw>
+<kw name="Dictionary Should Contain Item" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["nome"]}</arg>
+<arg>apelido</arg>
+<arg>May</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.131632" elapsed="0.000366"/>
+</kw>
+<kw name="Dictionary Should Contain Item" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["hobbies"]["livros"][0]}</arg>
+<arg>titulo</arg>
+<arg>O Símbolo Perdido</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.132113" elapsed="0.000386"/>
+</kw>
+<kw name="Dictionary Should Contain Item" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["hobbies"]["livros"][1]}</arg>
+<arg>titulo</arg>
+<arg>Sócios no Crime</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.132602" elapsed="0.000375"/>
+</kw>
+<kw name="Dictionary Should Contain Item" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["hobbies"]["livros"][2]}</arg>
+<arg>titulo</arg>
+<arg>Fortaleza Digital</arg>
+<doc>An item of ``key`` / ``value`` must be found in a ``dictionary``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.133079" elapsed="0.000531"/>
+</kw>
+<status status="PASS" start="2025-05-19T11:16:49.112928" elapsed="0.020754"/>
+</kw>
+<kw name="Confere listas no JSON">
+<kw name="Pega JSON">
+<kw name="Get File" owner="OperatingSystem">
+<msg time="2025-05-19T11:16:49.134828" level="INFO" html="true">Getting file '&lt;a href="file://C:\automation\web_robotfranework\tests\API_tests\data\json_complexo.json"&gt;C:\automation\web_robotfranework\tests\API_tests\data\json_complexo.json&lt;/a&gt;'.</msg>
+<msg time="2025-05-19T11:16:49.135212" level="INFO">${MEU_JSON_COMPLEXO} = {
+    "pessoa": {
+        "nome": {
+            "primeiro_nome": "mayara",
+            "nomes_do_meio": "ribeiro",
+            "ultimo_nome": "fernandes",
+            "apelido": "May"
+        },
+     ...</msg>
+<var>${MEU_JSON_COMPLEXO}</var>
+<arg>C:\\automation\\web_robotfranework\\tests\\API_tests/data/json_complexo.json</arg>
+<doc>Returns the contents of a specified file.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.134704" elapsed="0.000551"/>
+</kw>
+<kw name="Converter String para JSON">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-19T11:16:49.135928" level="INFO">${json} = {'pessoa': {'nome': {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}, 'hobbies': {'livros': [{'titulo': 'O Símbolo Perdido', 'autor': 'Dan Brown'},...</msg>
+<var>${json}</var>
+<arg>json.loads('''${string_json}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.135646" elapsed="0.000446"/>
+</kw>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-05-19T11:16:49.136152" elapsed="0.000033"/>
+</return>
+<msg time="2025-05-19T11:16:49.136322" level="INFO">${MEU_JSON_COMPLEXO} = {'pessoa': {'nome': {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}, 'hobbies': {'livros': [{'titulo': 'O Símbolo Perdido', 'autor': 'Dan Brown'},...</msg>
+<var>${MEU_JSON_COMPLEXO}</var>
+<arg>${MEU_JSON_COMPLEXO}</arg>
+<status status="PASS" start="2025-05-19T11:16:49.135388" elapsed="0.000962"/>
+</kw>
+<kw name="Converter String para JSON">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-05-19T11:16:49.136963" level="INFO">${json} = {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}</msg>
+<var>${json}</var>
+<arg>json.loads('''${string_json}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.136717" elapsed="0.000274"/>
+</kw>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-05-19T11:16:49.137042" elapsed="0.000029"/>
+</return>
+<msg time="2025-05-19T11:16:49.137191" level="INFO">${MEU_DICT_ESPERADO} = {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}</msg>
+<var>${MEU_DICT_ESPERADO}</var>
+<arg>${MEU_DICT_ESPERADO}</arg>
+<status status="PASS" start="2025-05-19T11:16:49.136485" elapsed="0.000733"/>
+</kw>
+<kw name="Dictionary Should Contain Sub Dictionary" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]['nome']}</arg>
+<arg>${MEU_DICT_ESPERADO}</arg>
+<doc>Fails unless all items in ``dict2`` are found from ``dict1``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.137309" elapsed="0.000403"/>
+</kw>
+<return>
+<value>${MEU_JSON_COMPLEXO}</value>
+<status status="PASS" start="2025-05-19T11:16:49.137766" elapsed="0.000028"/>
+</return>
+<msg time="2025-05-19T11:16:49.137948" level="INFO">${MEU_JSON_COMPLEXO} = {'pessoa': {'nome': {'primeiro_nome': 'mayara', 'nomes_do_meio': 'ribeiro', 'ultimo_nome': 'fernandes', 'apelido': 'May'}, 'hobbies': {'livros': [{'titulo': 'O Símbolo Perdido', 'autor': 'Dan Brown'},...</msg>
+<var>${MEU_JSON_COMPLEXO}</var>
+<status status="PASS" start="2025-05-19T11:16:49.134462" elapsed="0.003536"/>
+</kw>
+<kw name="List Should Contain Value" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["hobbies"]["games"]["PC"]}</arg>
+<arg>Aika</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.138140" elapsed="0.000634"/>
+</kw>
+<kw name="Get From List" owner="Collections">
+<msg time="2025-05-19T11:16:49.139805" level="INFO">${GAME} = Diablo III</msg>
+<var>${GAME}</var>
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["hobbies"]["games"]["Xbox"]}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.138951" elapsed="0.000974"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-05-18T16:32:21.510938" level="INFO">{'message': 'Cadastro realizado com sucesso', '_id': 'J9LtJmx0ZCugXAv7'}</msg>
-<arg>${response.json()}</arg>
+<msg time="2025-05-19T11:16:49.140544" level="INFO">Game da posição 2 da lista: Diablo III</msg>
+<arg>Game da posição 2 da lista: ${GAME}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-05-18T16:32:21.510394" elapsed="0.000603"/>
+<status status="PASS" start="2025-05-19T11:16:49.140247" elapsed="0.000354"/>
 </kw>
-<tag>template</tag>
-<status status="PASS" start="2025-05-18T16:32:21.176209" elapsed="0.335158"/>
+<kw name="List Should Not Contain Duplicates" owner="Collections">
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["hobbies"]["games"]["Xbox"]}</arg>
+<doc>Fails if any element in the ``list`` is found from it more than once.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.140783" elapsed="0.000490"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2025-05-19T11:16:49.141817" level="INFO">@{LISTA_DE_LIVROS} = [ {'titulo': 'O Símbolo Perdido', 'autor': 'Dan Brown'} | {'titulo': 'Sócios no Crime', 'autor': 'Agatha Christie'} | {'titulo': 'Fortaleza Digital', 'autor': 'Dan Brown'} ]</msg>
+<var>@{LISTA_DE_LIVROS}</var>
+<arg>${MEU_JSON_COMPLEXO["pessoa"]["hobbies"]}</arg>
+<arg>livros</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.141394" elapsed="0.000454"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-19T11:16:49.143671" level="INFO">Título: O Símbolo Perdido
+Autor: Dan Brown</msg>
+<arg>Título: ${LIVRO["titulo"]}\nAutor: ${LIVRO["autor"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.142727" elapsed="0.000998"/>
+</kw>
+<var name="${LIVRO}">{'titulo': 'O Símbolo Perdido', 'autor': 'Dan Brown'}</var>
+<status status="PASS" start="2025-05-19T11:16:49.142555" elapsed="0.001211"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-19T11:16:49.144609" level="INFO">Título: Sócios no Crime
+Autor: Agatha Christie</msg>
+<arg>Título: ${LIVRO["titulo"]}\nAutor: ${LIVRO["autor"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.143962" elapsed="0.000696"/>
+</kw>
+<var name="${LIVRO}">{'titulo': 'Sócios no Crime', 'autor': 'Agatha Christie'}</var>
+<status status="PASS" start="2025-05-19T11:16:49.143881" elapsed="0.000813"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-05-19T11:16:49.145523" level="INFO">Título: Fortaleza Digital
+Autor: Dan Brown</msg>
+<arg>Título: ${LIVRO["titulo"]}\nAutor: ${LIVRO["autor"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-05-19T11:16:49.144875" elapsed="0.000697"/>
+</kw>
+<var name="${LIVRO}">{'titulo': 'Fortaleza Digital', 'autor': 'Dan Brown'}</var>
+<status status="PASS" start="2025-05-19T11:16:49.144797" elapsed="0.000812"/>
+</iter>
+<var>${LIVRO}</var>
+<value>@{LISTA_DE_LIVROS}</value>
+<status status="PASS" start="2025-05-19T11:16:49.141930" elapsed="0.003710"/>
+</for>
+<status status="PASS" start="2025-05-19T11:16:49.134073" elapsed="0.011630"/>
+</kw>
+<tag>conferindo_json</tag>
+<status status="PASS" start="2025-05-19T11:16:49.111966" elapsed="0.034023"/>
 </test>
-<doc>Testes de API com Robot Framework - https://serverest.dev/#</doc>
-<status status="PASS" start="2025-05-18T16:32:20.543481" elapsed="0.968934"/>
+<status status="PASS" start="2025-05-19T11:16:48.388453" elapsed="0.758860"/>
 </suite>
-<status status="PASS" start="2025-05-18T16:32:20.505024" elapsed="1.008611"/>
+<status status="PASS" start="2025-05-19T11:16:48.349889" elapsed="0.798510"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">template</stat>
+<stat pass="1" fail="0" skip="0">conferindo_json</stat>
 </tag>
 <suite>
 <stat name="API tests" id="s1" pass="1" fail="0" skip="0">API tests</stat>
-<stat name="Test Server Rest" id="s1-s1" pass="1" fail="0" skip="0">API tests.Test Server Rest</stat>
+<stat name="Conferindo Json" id="s1-s1" pass="1" fail="0" skip="0">API tests.Conferindo Json</stat>
 </suite>
 </statistics>
 <errors>

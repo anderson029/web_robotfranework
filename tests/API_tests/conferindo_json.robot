@@ -8,6 +8,7 @@ ${MEU_DICT_ESPERADO}    {"primeiro_nome": "mayara", "nomes_do_meio": "ribeiro", 
 
 *** Test Cases ***
 Exemplo: Conferindo JSON complexo
+    [Tags]    conferindo_json
     Confere objetos e sub-objetos do JSON
     Confere listas no JSON
 
@@ -15,13 +16,22 @@ Exemplo: Conferindo JSON complexo
 Pega JSON
     ${MEU_JSON_COMPLEXO}     Get File    ${CURDIR}/data/json_complexo.json
     ### A Get File retorna ums STRING, vamos transformá-la em JSON
-    ${MEU_JSON_COMPLEXO}     To Json     ${MEU_JSON_COMPLEXO}
+    # Converte a string para um objeto JSON (dicionário Python)
+    ${MEU_JSON_COMPLEXO}    Converter String para JSON    ${MEU_JSON_COMPLEXO}
+    ${MEU_DICT_ESPERADO}    Converter String para JSON    ${MEU_DICT_ESPERADO}    
+    Dictionary Should Contain Sub Dictionary    ${MEU_JSON_COMPLEXO["pessoa"]['nome']}    ${MEU_DICT_ESPERADO}
+   
     RETURN       ${MEU_JSON_COMPLEXO}
+
+Converter String para JSON
+    [Arguments]    ${string_json}
+    ${json}    Evaluate    json.loads('''${string_json}''')    json
+    RETURN   ${json}
 
 Confere objetos e sub-objetos do JSON
     ${MEU_JSON_COMPLEXO}     Pega JSON
-    ${MEU_DICT_ESPERADO}     To Json    ${MEU_DICT_ESPERADO}
-
+    ${MEU_DICT_ESPERADO}     Converter String para JSON    ${MEU_DICT_ESPERADO}
+ 
     ### Conferindo um sub-dicionário dentro de um JSON
     Dictionary Should Contain Sub Dictionary    ${MEU_JSON_COMPLEXO["pessoa"]["nome"]}
     ...         ${MEU_DICT_ESPERADO}
